@@ -1,10 +1,39 @@
 <div class="register_container">
   <mat-card class="register_card">
     <div class="register_inputs">
+      <mat-card-title>
+        <span style="color: #4285F4;">F</span>
+        <span style="color: #EA4335;">u</span>
+        <span style="color: #FBBC05;">n</span>
+        <span style="color: #4285F4;">d</span>
+        <span style="color: #34A853;">o</span>
+        <span style="color: #EB4E41;">o</span>
+      </mat-card-title>
+      <h1>Create your Fundoo Notes Account</h1>
 
+      <form class="register-form">
+        <div class="userNames">
+          <mat-form-field appearance="outline">
+            <mat-label>First name</mat-label>
+            <input type="text" matInput id="firstName">
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" style="margin-left: 2%;">
+            <mat-label>Last name</mat-label>
+            <input type="text" matInput id="lastName">
+          </mat-form-field>
+        </div>
+        
+        <mat-form-field appearance="outline" class="form-input">
+          <mat-label>User name</mat-label>
+          <input type="email" matInput id="email">
+          <mat-hint>You can use letters, numbers &amp; periods</mat-hint>
+        </mat-form-field>
+      </form>
     </div>
-    <div class="register_image">
-      
+    <div class="register_image_container">
+      <img src="../../../assets/images/account.svg" />
+      <p>Add your notes and reminder here</p>
     </div>
   </mat-card>
 </div>
