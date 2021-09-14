@@ -18,7 +18,7 @@ $hintSize:12px;
     min-height: 500px;
     .login_inputs
     {
-        border: 1px solid black;
+        
         display: flex;
         flex-direction: column;
         flex-grow: 2;
@@ -30,7 +30,6 @@ $hintSize:12px;
             font-family: Verdana, Geneva, Tahoma, sans-serif;
         }
         mat-form-field{
-            font-size: 8px;
             width: 80%;
             input{
                 padding: 3px;
@@ -42,6 +41,15 @@ $hintSize:12px;
         mat-hint{
             font-size: $hintSize;
         }
+        .forget_password
+        {
+            display: flex;
+            align-items: flex-start;
+            text-decoration: none;
+            font-weight: bold;
+            color: #1A73E8;
+            margin-left: 45px;
+        }
         .button_container
         {
             display: flex;
@@ -51,9 +59,8 @@ $hintSize:12px;
         }
         .login-form
         {
-            border: 1px solid black;
             div:not(:last-child){
-                margin-top: 35px;
+                margin-top: 15px;
             }
             div:last-child {
                margin-top: 95px;
