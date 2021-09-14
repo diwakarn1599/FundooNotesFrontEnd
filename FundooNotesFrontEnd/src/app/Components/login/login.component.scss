@@ -1,0 +1,101 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
+$hintSize:12px;
+.login_container
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 3%;
+}   
+.login_card
+{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    text-align: center;
+    width: 30%;
+    border:0.5px solid #DDDFE2;
+    min-height: 500px;
+    .login_inputs
+    {
+        border: 1px solid black;
+        display: flex;
+        flex-direction: column;
+        flex-grow: 2;
+        padding: 10px;
+        mat-card-title{
+            font-family:Verdana, Geneva, Tahoma, sans-serif;
+        }
+        h2{
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+        mat-form-field{
+            font-size: 8px;
+            width: 80%;
+            input{
+                padding: 3px;
+            }
+        }
+        mat-label{
+            font-size: 15px;
+        }
+        mat-hint{
+            font-size: $hintSize;
+        }
+        .button_container
+        {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        .login-form
+        {
+            border: 1px solid black;
+            div:not(:last-child){
+                margin-top: 35px;
+            }
+            div:last-child {
+               margin-top: 95px;
+              }
+        }
+        
+    }
+}
+@media only screen and (max-width: 1350px) {
+    .login_card
+    {
+        width: 40%;
+    }
+    .login_image_container
+    {
+        display: none!important;
+        
+    }
+    .login_card
+    {
+        flex-direction: column;
+    }
+    .login_inputs
+    {
+        width: 100%!important;
+    }
+    mat-form-field{
+        width: 90%;
+    }
+    .form-input
+    {
+        width: 90%!important;
+    }
+    .button_container
+    {
+        width: 90%!important;
+    }
+}
+@media only screen and (max-width: 600px) {
+    .login_card
+    {
+        width: 100%;
+    }
+}
+
