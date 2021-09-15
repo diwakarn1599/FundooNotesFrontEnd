@@ -31,7 +31,7 @@ $hintSize:12px;
         mat-form-field{
             font-size: 12px;
             input{
-                padding: 0px;
+                padding: 2px;
             }
         }
         mat-label{
@@ -39,6 +39,9 @@ $hintSize:12px;
         }
         mat-hint{
             font-size: $hintSize;
+        }
+        mat-error{
+            font-size: 13px;
         }
         .inline-inputs{
             display: flex;
