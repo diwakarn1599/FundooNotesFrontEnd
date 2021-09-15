@@ -45,10 +45,10 @@
             &amp; symbols</mat-hint>
         </div>
         <div>
-          <mat-checkbox id="showPassword" style="margin-left: 3px;">Show Password</mat-checkbox>
+          <mat-checkbox id="showPassword" style="margin-left: 3px;" onclick="showPassword()">Show Password</mat-checkbox>
         </div>
         <div class="button_container">
-          <button mat-button color="primary">Sign in instead</button>
+          <button [routerLink]="['/login']" mat-button color="primary">Sign in instead</button>
           <button mat-raised-button color="primary">Register</button>
         </div>
 
