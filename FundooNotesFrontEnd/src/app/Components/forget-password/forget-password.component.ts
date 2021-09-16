@@ -10,12 +10,33 @@ import { Router } from '@angular/router';
 })
 export class ForgetPasswordComponent implements OnInit {
   ForgetPasswordForm!: FormGroup;
-  constructor() { }
+  constructor(private userService:UserServiceService, private snackBar:MatSnackBar, private router:Router) { }
 
   ngOnInit(): void {
     this.ForgetPasswordForm = new FormGroup({
       email: new FormControl('',[Validators.required,])
     });
+  }
+
+  forgetPassword()
+  {
+    console.log("hello");
+    
+    this.userService.ForgetPassword(this.ForgetPasswordForm.value.email)
+    .subscribe((result:any)=>{
+    
+      this.snackBar.open(`${result.message}`, '', {
+          duration: 3000,
+          verticalPosition: 'bottom',
+          horizontalPosition: 'left'
+        });
+    },error => {  
+      this.snackBar.open(`${error.error.message}`, '', {
+        duration: 3000,
+        verticalPosition: 'bottom',
+        horizontalPosition: 'left'
+      });
+    })
   }
 
 }
