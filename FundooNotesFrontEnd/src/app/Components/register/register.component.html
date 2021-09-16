@@ -37,7 +37,7 @@
         <div class="inline-inputs">
           <mat-form-field appearance="outline" (click)="this.isVisible=false">
             <mat-label>Password</mat-label>
-            <input [type]="hide?'password':'text'" matInput id="password" formControlName ="password" >
+            <input [type]="hide?'password':'text'" matInput id="password" formControlName ="password">
             <mat-error *ngIf="RegisterForm.controls['password'].invalid">{{getErrorMessage("password")}}</mat-error>
             
           </mat-form-field>
@@ -55,7 +55,7 @@
         </div>
         <div class="button_container">
           <button [routerLink]="['/login']" mat-button color="primary">Sign in instead</button>
-          <button mat-raised-button color="primary" (click)="Register()">Register</button>
+          <button mat-raised-button [disabled]="RegisterForm.invalid" color="primary" (click)="Register()">Register</button>
         </div>
 
       </form>

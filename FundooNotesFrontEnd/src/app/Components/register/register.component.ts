@@ -51,9 +51,7 @@ export class RegisterComponent implements OnInit {
   {
     this.userService.Register(this.RegisterForm.value)
     .subscribe((result:any)=>{
-      console.log(result);
-      
-        this.snackBar.open(`${result.message}`, '', {
+      this.snackBar.open(`${result.message}`, '', {
           duration: 3000,
           verticalPosition: 'bottom',
           horizontalPosition: 'left'
@@ -71,5 +69,7 @@ export class RegisterComponent implements OnInit {
     })
     
   }
+
+  
 }
 
