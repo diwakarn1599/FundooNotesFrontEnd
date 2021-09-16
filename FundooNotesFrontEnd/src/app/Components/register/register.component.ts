@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators, FormGroup } from '@angular/forms';
-
+import { UserServiceService } from 'src/app/Services/UserService/user-service.service';
+import {MatSnackBar} from '@angular/material/snack-bar';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -11,14 +12,16 @@ export class RegisterComponent implements OnInit {
   hide:boolean =  true;
   isVisible:boolean =  true;
   matchpwd:boolean = true;
-  constructor() { }
+
+  constructor(private userService:UserServiceService, private snackBar:MatSnackBar) {
+   }
 
   ngOnInit(): void {
     this.RegisterForm = new FormGroup({
       firstName: new FormControl('',[Validators.required, Validators.pattern('^[A-Z]{1}[a-zA-Z]{2,}'),Validators.minLength(3)]),
       lastName: new FormControl('',[Validators.required, Validators.pattern('^[A-Z]{1}[a-zA-Z]{2,}'),Validators.minLength(3)]),
       email: new FormControl('',[Validators.required, Validators.email]),
-      password:new FormControl('',[Validators.required, Validators.pattern('^.*(?=.{8,})(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!*@#$%^&+=]).*$'),Validators.minLength(8)]),
+      password:new FormControl('',[Validators.required, Validators.pattern('^.*(?=.{8,})(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!*@#$%^&+=]).*$')]),
       confirmPassword:new FormControl('',[Validators.required])
     });
   }
@@ -41,6 +44,24 @@ export class RegisterComponent implements OnInit {
         return `${inputName} is invalid`;
       }
       return this.RegisterForm.controls[`${inputName}`].hasError('pattern') ? `${inputName} is invalid` : '';
+  }
+
+  Register()
+  {
+    this.userService.Register(this.RegisterForm.value)
+    .subscribe((result:any)=>{
+        console.log(result);
+        if(result.status == true)
+        {
+          
+        }
+        this.snackBar.open(`${result.message}`, '', {
+          duration: 3000,
+          verticalPosition: 'bottom',
+          horizontalPosition: 'left'
+        });
+    })
+    
   }
 }
 
