@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators, FormGroup } from '@angular/forms';
 import { UserServiceService } from 'src/app/Services/UserService/user-service.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -13,7 +14,7 @@ export class RegisterComponent implements OnInit {
   isVisible:boolean =  true;
   matchpwd:boolean = true;
 
-  constructor(private userService:UserServiceService, private snackBar:MatSnackBar) {
+  constructor(private userService:UserServiceService, private snackBar:MatSnackBar, private router:Router) {
    }
 
   ngOnInit(): void {
@@ -50,16 +51,23 @@ export class RegisterComponent implements OnInit {
   {
     this.userService.Register(this.RegisterForm.value)
     .subscribe((result:any)=>{
-        console.log(result);
-        if(result.status == true)
-        {
-          
-        }
+      console.log(result);
+      
         this.snackBar.open(`${result.message}`, '', {
           duration: 3000,
           verticalPosition: 'bottom',
           horizontalPosition: 'left'
         });
+        if(result.status == true)
+        {
+          this.router.navigate(['/login']);
+        }
+    },error => {  
+      this.snackBar.open(`${error.error.message}`, '', {
+        duration: 3000,
+        verticalPosition: 'bottom',
+        horizontalPosition: 'left'
+      });
     })
     
   }
