@@ -14,22 +14,24 @@ export class ForgetPasswordComponent implements OnInit {
 
   ngOnInit(): void {
     this.ForgetPasswordForm = new FormGroup({
-      email: new FormControl('',[Validators.required,])
+      email: new FormControl('',[Validators.required])
     });
   }
 
   forgetPassword()
   {
     console.log("hello");
-    
     this.userService.ForgetPassword(this.ForgetPasswordForm.value.email)
     .subscribe((result:any)=>{
       localStorage.setItem('token',result.data);
+      localStorage.setItem('email',this.ForgetPasswordForm.value.email);
       this.snackBar.open(`${result.message}`, '', {
           duration: 3000,
           verticalPosition: 'bottom',
           horizontalPosition: 'left'
         });
+      if(result.status)
+        this.router.navigate(['/login']);
     },error => {  
       this.snackBar.open(`${error.error.message}`, '', {
         duration: 3000,
