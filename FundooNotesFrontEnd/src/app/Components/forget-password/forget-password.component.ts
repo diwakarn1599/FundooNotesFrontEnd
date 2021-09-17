@@ -24,7 +24,7 @@ export class ForgetPasswordComponent implements OnInit {
     
     this.userService.ForgetPassword(this.ForgetPasswordForm.value.email)
     .subscribe((result:any)=>{
-    
+      localStorage.setItem('token',result.data);
       this.snackBar.open(`${result.message}`, '', {
           duration: 3000,
           verticalPosition: 'bottom',
