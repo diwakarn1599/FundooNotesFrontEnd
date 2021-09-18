@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined");
 .home_container
 {
     mat-toolbar
@@ -44,7 +45,6 @@
       }
       mat-sidenav {
         width: 250px;
-        overflow: hidden!important;
         border-right: 0;
       }
       mat-sidenav-content{
