@@ -12,7 +12,6 @@ export class RegisterComponent implements OnInit {
   RegisterForm !: FormGroup;
   hide:boolean =  true;
   isVisible:boolean =  true;
-  matchpwd:boolean = true;
 
   constructor(private userService:UserServiceService, private snackBar:MatSnackBar, private router:Router) {
    }
