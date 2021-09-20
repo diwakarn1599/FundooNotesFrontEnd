@@ -79,7 +79,7 @@
     
 }
 
-::ng-deep.mat-menu-content:not(:empty) 
+::ng-deep .mat-menu-content:not(:empty) 
 {
     display: flex;
     justify-content: center;
@@ -94,9 +94,9 @@
     width: 40 !important;
     border-radius: 50%;
 }
-::ng-deep.mat-menu-panel 
+::ng-deep .mat-menu-panel 
 {
-    width: 354px !important;
+    min-width: 354px !important;
     border-radius: 8px !important;
 }
 mat-divider
