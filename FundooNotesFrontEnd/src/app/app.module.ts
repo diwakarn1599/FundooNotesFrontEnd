@@ -24,6 +24,8 @@ import { HomeComponent } from './Components/home/home.component';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatListModule} from '@angular/material/list';
+import { AddNoteComponent } from './Components/add-note/add-note.component';
+import { NoteIconsComponent } from './Components/note-icons/note-icons.component';
 
 @NgModule({
   declarations: [
@@ -32,10 +34,12 @@ import {MatListModule} from '@angular/material/list';
     LoginComponent,
     ForgetPasswordComponent,
     ResetPasswordComponent,
-    HomeComponent
+    HomeComponent,
+    AddNoteComponent,
+    NoteIconsComponent
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AppRoutingModule,
     BrowserAnimationsModule,
     MatSliderModule,
