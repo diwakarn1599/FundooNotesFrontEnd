@@ -10,11 +10,6 @@
         background-color: white;
         border-bottom: 1px solid rgb(218,220,224);
     }
-    .logo
-    {
-        display: flex;
-        align-items: center;
-    }
     ::ng-deep .mat-form-field {
         .mat-form-field-flex {
           display: flex;
@@ -29,6 +24,17 @@
           width: 0;
         }
         
+    }
+    .logo
+    {
+        display: flex;
+        align-items: center;
+    }
+    
+    .fontsize-14
+    {
+        font-size: 14px;
+        margin: 0;
     }
     .menu-icon
     {
@@ -68,6 +74,45 @@
           height: 35px;
           margin-top: 4px;
       }
+      
     
     
+}
+
+::ng-deep.mat-menu-content:not(:empty) 
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+.profilePic
+{
+    height: 50px;
+    width: 40 !important;
+    border-radius: 50%;
+}
+::ng-deep.mat-menu-panel 
+{
+    width: 354px !important;
+    border-radius: 8px !important;
+}
+mat-divider
+{
+    width: 100%;
+}
+h1{
+    padding-top: 10px;
+    color: #202124;
+    font-size: 16px ;
+    font-weight: 500;
+    letter-spacing: 0.29px;
+    margin: 0;
+}
+p{
+    color: #5f6368;
+    font-size:14px;
+    letter-spacing: normal;
 }
