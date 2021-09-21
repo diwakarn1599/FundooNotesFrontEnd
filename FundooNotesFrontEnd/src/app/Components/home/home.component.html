@@ -17,18 +17,20 @@
             </mat-form-field>
         </div>
         <div>
-            <button mat-icon-button class="example-icon favorite-icon" >
-                <mat-icon>list</mat-icon>
+            <button mat-icon-button class="example-icon favorite-icon" (click)="toggleView()">
+                <mat-icon *ngIf="list">view_list</mat-icon>
+                <mat-icon *ngIf="!list">view_module</mat-icon>
             </button>
+
             <button mat-icon-button [matMenuTriggerFor]="menu" class="example-icon" aria-label="Example icon-button with share icon">
                 <mat-icon>account_circle</mat-icon>
             </button>
-            <mat-menu #menu="matMenu" class="profileMenu">
+            <mat-menu #menu="matMenu" class="profileMenu" style="padding-top:20px ;">
                 <img src="../../../assets/images/profilePic.PNG" class="profilePic">
                 <h1>Diwakar N</h1>
                 <p>diwakarn@gmail.com</p>
                 <mat-divider style="margin-top: 20px;"></mat-divider>
-                <button mat-stroked-button style="margin:10px 0">Sign out</button>
+                <button mat-stroked-button style="margin:10px 0" [routerLink]="['/login']">Sign out</button>
                 <mat-divider></mat-divider>
             </mat-menu>
         </div>

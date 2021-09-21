@@ -28,6 +28,7 @@ import { AddNoteComponent } from './Components/add-note/add-note.component';
 import { NoteIconsComponent } from './Components/note-icons/note-icons.component';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatDialogModule} from '@angular/material/dialog';
+import {MatTooltipModule} from '@angular/material/tooltip';
 @NgModule({
   declarations: [
     AppComponent,
@@ -59,7 +60,8 @@ import {MatDialogModule} from '@angular/material/dialog';
     MatSidenavModule,
     MatListModule,
     MatMenuModule,
-    MatDialogModule
+    MatDialogModule,
+    MatTooltipModule
   ],
   providers: [],
   bootstrap: [AppComponent]

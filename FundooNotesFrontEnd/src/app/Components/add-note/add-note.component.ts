@@ -12,7 +12,8 @@ export class AddNoteComponent implements OnInit {
   smallNote:boolean = true;
   bigNote:boolean = false;
   NoteForm !: FormGroup;
-  constructor() { }
+  pinned:boolean = false;
+  constructor(private snackBar:MatSnackBar) { }
 
   ngOnInit(): void {
     this.NoteForm = new FormGroup({
@@ -24,5 +25,15 @@ export class AddNoteComponent implements OnInit {
   {
     this.smallNote = false;
     this.bigNote = true;
+  }
+  pinNote()
+  {
+    this.snackBar.open(`${this.pinned?'Note Unpinned':'Note Pinned'}`, '', {
+        duration: 2000,
+        verticalPosition: 'bottom',
+        horizontalPosition: 'left'
+      });
+      this.pinned=!this.pinned;
+    
   }
 }

@@ -41,7 +41,7 @@
         color: #5F6368;
     }
     .main{
-        min-height: 600px;
+        min-height: 400px;
         background-color: white;
     }
     mat-sidenav:not(.mat-drawer-opened) {
@@ -94,9 +94,9 @@
     width: 40 !important;
     border-radius: 50%;
 }
-::ng-deep .mat-menu-panel 
+::ng-deep #mat-menu-panel-0 
 {
-    min-width: 354px !important;
+    min-width: 300px !important;
     border-radius: 8px !important;
 }
 mat-divider

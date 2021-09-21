@@ -7,9 +7,13 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
   opened: boolean = true;
+  list: boolean = true;
   constructor() { }
 
   ngOnInit(): void {
   }
-  
+  toggleView()
+  {
+    this.list = !this.list;
+  }
 }

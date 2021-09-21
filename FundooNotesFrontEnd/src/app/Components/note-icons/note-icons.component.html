@@ -1,35 +1,44 @@
 <div class="icons">
-    <button mat-icon-button class="example-icon favorite-icon" >
-        <mat-icon mat-list-icon class= "material-icons-outlined"  [matMenuTriggerFor]="reminderMenu" >add_alert</mat-icon>
-    </button>
-    <button mat-icon-button class="example-icon favorite-icon" >
-        <mat-icon mat-list-icon class= "material-icons-outlined">person_add</mat-icon>
-    </button>
-    <button mat-icon-button class="example-icon favorite-icon" >
-        <mat-icon mat-list-icon class= "material-icons-outlined">color_lens</mat-icon>
-    </button>
-    <button mat-icon-button class="example-icon favorite-icon" >
-        <mat-icon mat-list-icon class= "material-icons-outlined">image</mat-icon>
-    </button>
-    <button mat-icon-button class="example-icon favorite-icon" >
-        <mat-icon mat-list-icon class= "material-icons-outlined">archive</mat-icon>
-    </button>
-    <button mat-icon-button class="example-icon favorite-icon" [matMenuTriggerFor]="labelMenu" >
-        <mat-icon mat-list-icon class= "material-icons-outlined">more_vert</mat-icon>
-    </button>
-    <button mat-icon-button class="example-icon favorite-icon" >
-        <mat-icon mat-list-icon class= "material-icons-outlined">redo</mat-icon>
-    </button>
-    <button mat-icon-button class="example-icon favorite-icon" >
-        <mat-icon mat-list-icon class= "material-icons-outlined">undo</mat-icon>
-    </button>
-    <button mat-button color="primary" (click)="Close()">Close</button>
+    <div>
+        <button mat-icon-button class="example-icon favorite-icon" matTooltip="remind me" [matMenuTriggerFor]="reminderMenu">
+            <mat-icon mat-list-icon class="material-icons-outlined" >add_alert
+            </mat-icon>
+        </button>
+        <button mat-icon-button class="example-icon favorite-icon" matTooltip="Collaborator">
+            <mat-icon mat-list-icon class="material-icons-outlined">person_add</mat-icon>
+        </button>
+        <button mat-icon-button class="example-icon favorite-icon" [matMenuTriggerFor]="colorMenu" matTooltip="Change Color">
+            <mat-icon mat-list-icon class="material-icons-outlined">color_lens</mat-icon>
+        </button>
+        <button mat-icon-button class="example-icon favorite-icon" matTooltip="Add Image">
+            <mat-icon mat-list-icon class="material-icons-outlined">image</mat-icon>
+        </button>
+        <button mat-icon-button class="example-icon favorite-icon" matTooltip="Archive">
+            <mat-icon mat-list-icon class="material-icons-outlined">archive</mat-icon>
+        </button>
+        <button mat-icon-button class="example-icon favorite-icon" [matMenuTriggerFor]="labelMenu" matTooltip="More">
+            <mat-icon mat-list-icon class="material-icons-outlined">more_vert</mat-icon>
+        </button>
+        <button mat-icon-button class="example-icon favorite-icon" matTooltip="redo">
+            <mat-icon mat-list-icon class="material-icons-outlined">redo</mat-icon>
+        </button>
+        <button mat-icon-button class="example-icon favorite-icon" matTooltip="undo">
+            <mat-icon mat-list-icon class="material-icons-outlined">undo</mat-icon>
+        </button>
+    </div>
+    <div>
+        <button mat-button color="primary" (click)="Close()">Close</button>
+    </div>
 </div>
 <mat-menu #labelMenu="matMenu" class="note_menu">
     <button mat-menu-item>Add Label</button>
 </mat-menu>
 <mat-menu #reminderMenu="matMenu" class="note_menu">
-    <button mat-menu-item>Today</button>
-    <button mat-menu-item>Tommorow</button>
-    <button mat-menu-item>Next Week</button>
+    <button mat-menu-item [disabled]="true">Reminder:</button>
+    <button mat-menu-item><span>Later Today</span><span style="color:#9DBDE1">8:00 PM</span></button>
+    <button mat-menu-item><span>Tommorow</span><span style="color:#9DBDE1">8:00 AM</span></button>
+    <button mat-menu-item><span>Next Week</span><span style="color:#9DBDE1">8:00 AM</span></button>
+</mat-menu>
+<mat-menu #colorMenu="matMenu" class="color_menu" yPosition="above">
+    <!-- <span *ngFor="let color of Colors"></span> -->
 </mat-menu>

@@ -6,7 +6,7 @@ import { ForgetPasswordComponent } from './Components/forget-password/forget-pas
 import { ResetPasswordComponent } from './Components/reset-password/reset-password.component';
 import { HomeComponent } from './Components/home/home.component';
 var token:any;
-token = localStorage.getItem('token')!;
+token = localStorage.getItem('token');
 const routes: Routes = [
   {
     path:'register',component:RegisterComponent,

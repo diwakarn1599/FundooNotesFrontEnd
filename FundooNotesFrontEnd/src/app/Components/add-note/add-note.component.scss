@@ -20,7 +20,7 @@
     mat-card{
         display: flex;
         flex-direction: row;
-        min-width:575px;
+        min-width:475px;
         align-items: center;
         border-radius: 10px;
         margin-top: 25px;
@@ -70,7 +70,7 @@
         justify-content: space-between;
         width: 100%;
     }
-    mat-card-footer
+    :ng-deep .mat-card-footer
     {
         width: 100%;
     }
