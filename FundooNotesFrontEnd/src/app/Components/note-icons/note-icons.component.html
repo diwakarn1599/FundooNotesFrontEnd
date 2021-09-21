@@ -27,7 +27,7 @@
         </button>
     </div>
     <div>
-        <button mat-button color="primary" (click)="Close()">Close</button>
+        <button mat-button (click)="Close()">Close</button>
     </div>
 </div>
 <mat-menu #labelMenu="matMenu" class="note_menu">
@@ -39,6 +39,8 @@
     <button mat-menu-item><span>Tommorow</span><span style="color:#9DBDE1">8:00 AM</span></button>
     <button mat-menu-item><span>Next Week</span><span style="color:#9DBDE1">8:00 AM</span></button>
 </mat-menu>
-<mat-menu #colorMenu="matMenu" class="color_menu" yPosition="above">
-    <!-- <span *ngFor="let color of Colors"></span> -->
+<mat-menu #colorMenu="matMenu" class="color_menu" yPosition="above" >
+    <span class="colors" (click)="ChangeColor(colors[i].color)" [style.background-color]="colors[i].color" matTooltip="{{colors[i].toolTip}}" *ngFor="let color of colors;let i=index">
+        <mat-icon mat-list-icon *ngIf="colors[i].icon">done</mat-icon>
+    </span>
 </mat-menu>

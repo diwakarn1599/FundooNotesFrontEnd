@@ -3,6 +3,7 @@ import { FormControl, Validators, FormGroup } from '@angular/forms';
 import { UserServiceService } from 'src/app/Services/UserService/user-service.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { WHITE_ON_BLACK_CSS_CLASS } from '@angular/cdk/a11y/high-contrast-mode/high-contrast-mode-detector';
 @Component({
   selector: 'app-add-note',
   templateUrl: './add-note.component.html',
@@ -13,6 +14,7 @@ export class AddNoteComponent implements OnInit {
   bigNote:boolean = false;
   NoteForm !: FormGroup;
   pinned:boolean = false;
+  noteColor = "white";
   constructor(private snackBar:MatSnackBar) { }
 
   ngOnInit(): void {

@@ -78,14 +78,12 @@
     
     
 }
-
-::ng-deep .mat-menu-content:not(:empty) 
+::ng-deep .ng-tns-c114-1
 {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    border: 1px solid #ccc;
     border-radius: 8px;
 }
 .profilePic
