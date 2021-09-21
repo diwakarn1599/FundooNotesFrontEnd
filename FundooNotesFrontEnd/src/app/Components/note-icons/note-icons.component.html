@@ -35,9 +35,7 @@
 </mat-menu>
 <mat-menu #reminderMenu="matMenu" class="note_menu">
     <button mat-menu-item [disabled]="true">Reminder:</button>
-    <button mat-menu-item><span>Later Today</span><span style="color:#9DBDE1">8:00 PM</span></button>
-    <button mat-menu-item><span>Tommorow</span><span style="color:#9DBDE1">8:00 AM</span></button>
-    <button mat-menu-item><span>Next Week</span><span style="color:#9DBDE1">8:00 AM</span></button>
+    <button mat-menu-item *ngFor="let rem of reminders;let i=index" (click)="addReminder(rem)"><span>{{rem.Text}}</span><span style="color:#9DBDE1">{{rem.Time}}</span></button>
 </mat-menu>
 <mat-menu #colorMenu="matMenu" class="color_menu" yPosition="above" >
     <span class="colors" (click)="ChangeColor(colors[i].color)" [style.background-color]="colors[i].color" matTooltip="{{colors[i].toolTip}}" *ngFor="let color of colors;let i=index">

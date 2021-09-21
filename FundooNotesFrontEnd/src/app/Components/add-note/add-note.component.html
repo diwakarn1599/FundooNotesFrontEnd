@@ -21,6 +21,11 @@
         <textarea cdkTextareaAutosize placeholder="Take a Note..." class="textarea" formControlName ="Description" [style.background-color]="noteColor"></textarea>
         </mat-card-content>
         <mat-card-footer>
+            <span *ngIf="isReminder" class="reminderLabel">
+                <mat-icon mat-list-icon class="material-icons-outlined">watch_later</mat-icon>
+                <p>{{Reminder}}</p>
+                <mat-icon mat-list-icon class="material-icons-outlined cursor" (click)="RemoveRemider()">close</mat-icon>
+            </span>
             <app-note-icons></app-note-icons>
         </mat-card-footer>
     </form>

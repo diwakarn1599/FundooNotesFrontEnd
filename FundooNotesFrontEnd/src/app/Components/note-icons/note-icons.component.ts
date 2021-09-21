@@ -71,6 +71,20 @@ export class NoteIconsComponent implements OnInit {
       "icon":false
     }
   ];
+  reminders: any[] = [
+    {
+      "Text": "Later Today",
+      "Time":"8:00 PM"
+    },
+    {
+      "Text": "Tommorow",
+      "Time":"8:00 AM"
+    },
+    {
+      "Text": "Next Week",
+      "Time":"8:00 AM"
+    }
+  ];
 
   ngOnInit(): void {
   }
@@ -99,6 +113,11 @@ export class NoteIconsComponent implements OnInit {
     this.addNote.noteColor = color;
     for (var val of this.colors)
         val.icon = val.color==color?true:false;
+  }
+  addReminder(rem:any)
+  {
+    this.addNote.isReminder=true;
+    this.addNote.Reminder=`${rem.Text} ${rem.Time}`
   }
 }
 

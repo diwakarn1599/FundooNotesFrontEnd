@@ -15,6 +15,8 @@ export class AddNoteComponent implements OnInit {
   NoteForm !: FormGroup;
   pinned:boolean = false;
   noteColor = "white";
+  isReminder=false;
+  Reminder="Today";
   constructor(private snackBar:MatSnackBar) { }
 
   ngOnInit(): void {
@@ -37,5 +39,9 @@ export class AddNoteComponent implements OnInit {
       });
       this.pinned=!this.pinned;
     
+  }
+  RemoveRemider()
+  {
+    this.isReminder = false;
   }
 }
