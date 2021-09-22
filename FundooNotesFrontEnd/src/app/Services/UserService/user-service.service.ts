@@ -36,7 +36,6 @@ export class UserServiceService {
 
   ResetPassword(data:any)
   {
-    
     const params = {
       Email: data.email,
       Password: data.password

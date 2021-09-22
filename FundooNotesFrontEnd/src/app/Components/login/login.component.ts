@@ -3,6 +3,7 @@ import { FormControl, Validators, FormGroup } from '@angular/forms';
 import { UserServiceService } from 'src/app/Services/UserService/user-service.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { GetNotesComponent } from '../get-notes/get-notes.component';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -11,7 +12,7 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
   LoginForm !: FormGroup;
   hide = true;
-  constructor(private userService:UserServiceService, private snackBar:MatSnackBar, private router:Router) { }
+  constructor(private userService:UserServiceService, private snackBar:MatSnackBar, private router:Router,private note:GetNotesComponent) { }
 
   ngOnInit(): void {
      this.LoginForm = new FormGroup({

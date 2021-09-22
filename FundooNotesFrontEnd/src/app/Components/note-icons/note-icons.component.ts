@@ -4,6 +4,7 @@ import { NoteServiceService } from 'src/app/Services/NoteService/note-service.se
 import { AddNoteComponent } from '../add-note/add-note.component';
 import { MatDialog, MatDialogConfig, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { CollaboratorComponent } from '../collaborator/collaborator.component';
+import { GetNotesComponent } from '../get-notes/get-notes.component';
 @Component({
   selector: 'app-note-icons',
   templateUrl: './note-icons.component.html',
@@ -12,7 +13,7 @@ import { CollaboratorComponent } from '../collaborator/collaborator.component';
 export class NoteIconsComponent implements OnInit {
 
   archive = false;
-  constructor(private addNote: AddNoteComponent, private noteService: NoteServiceService, private snackBar: MatSnackBar, public dialog: MatDialog) { }
+  constructor(private addNote: AddNoteComponent, private noteService: NoteServiceService, private snackBar: MatSnackBar, public dialog: MatDialog,private note:GetNotesComponent) { }
   colors: any[] = [
     {
       "color": "#fff",
@@ -123,6 +124,7 @@ export class NoteIconsComponent implements OnInit {
         });
       });
     this.addNote.NoteForm.reset();
+    this.note.getNotes();
   }
   ChangeColor(color: any) {
     this.addNote.noteColor = color;

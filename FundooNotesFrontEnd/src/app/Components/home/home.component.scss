@@ -76,11 +76,12 @@
       }
       
 }
-::ng-deep .ng-tns-c114-1
+::ng-deep .profileMenu
 {
     display: flex;
     justify-content: center;
     align-items: center;
+    text-align: center;
     flex-direction: column;
     border-radius: 8px;
 }
@@ -90,12 +91,13 @@
     width: 40 !important;
     border-radius: 50%;
 }
-::ng-deep #mat-menu-panel-0 
+::ng-deep .profileMenu 
 {
     min-width: 300px !important;
     border-radius: 8px !important;
+    text-align: center;
 }
-mat-divider
+.mat-divider
 {
     width: 100%;
 }
@@ -111,4 +113,11 @@ p{
     color: #5f6368;
     font-size:14px;
     letter-spacing: normal;
+}
+::ng-deep .get_notes
+{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    width: 100%;
 }

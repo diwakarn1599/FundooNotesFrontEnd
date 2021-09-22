@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
+import { GetNotesComponent } from '../get-notes/get-notes.component';
 
 @Component({
   selector: 'app-home',
@@ -10,7 +11,7 @@ export class HomeComponent implements OnInit {
   opened: boolean = true;
   list: boolean = true;
   constructor(private router:Router) { }
-
+  
   ngOnInit(): void {
   }
   toggleView()
