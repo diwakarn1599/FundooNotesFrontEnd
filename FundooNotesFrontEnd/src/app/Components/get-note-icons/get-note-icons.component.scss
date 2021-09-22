@@ -11,22 +11,22 @@
     }
     mat-icon{
         color:#212121;
-        font-size: 20px;
+        font-size: 18px;
     }
 }
-::ng-deep .reminder_menu
+::ng-deep .get_note_reminder_menu
 {
     width: 500px;
     border-radius: 8px !important;
 }
 
-::ng-deep .note_menu
+::ng-deep .get_note_note_menu
 {
     width: 100px;
     border-radius: 8px !important;
     min-height: auto!important;
 }
-::ng-deep .color_menu
+::ng-deep .get_note_color_menu
 {
     display: flex;
     flex-direction: row;

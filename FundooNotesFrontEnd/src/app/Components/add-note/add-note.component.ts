@@ -1,9 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Injectable, OnInit } from '@angular/core';
 import { FormControl, Validators, FormGroup } from '@angular/forms';
 import { UserServiceService } from 'src/app/Services/UserService/user-service.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { WHITE_ON_BLACK_CSS_CLASS } from '@angular/cdk/a11y/high-contrast-mode/high-contrast-mode-detector';
+@Injectable({ 
+  providedIn: 'root' 
+})
 @Component({
   selector: 'app-add-note',
   templateUrl: './add-note.component.html',
@@ -32,13 +35,7 @@ export class AddNoteComponent implements OnInit {
   }
   pinNote()
   {
-    // this.snackBar.open(`${this.pinned?'Note Unpinned':'Note Pinned'}`, '', {
-    //     duration: 2000,
-    //     verticalPosition: 'bottom',
-    //     horizontalPosition: 'left'
-    //   });
       this.pinned=!this.pinned;
-    
   }
   RemoveReminder()
   {

@@ -30,6 +30,8 @@ import {MatMenuModule} from '@angular/material/menu';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import { CollaboratorComponent } from './Components/collaborator/collaborator.component';
+import { GetNotesComponent } from './Components/get-notes/get-notes.component';
+import { GetNoteIconsComponent } from './Components/get-note-icons/get-note-icons.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,7 +42,9 @@ import { CollaboratorComponent } from './Components/collaborator/collaborator.co
     HomeComponent,
     AddNoteComponent,
     NoteIconsComponent,
-    CollaboratorComponent
+    CollaboratorComponent,
+    GetNotesComponent,
+    GetNoteIconsComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
@@ -65,7 +69,7 @@ import { CollaboratorComponent } from './Components/collaborator/collaborator.co
     MatDialogModule,
     MatTooltipModule
   ],
-  providers: [],
+  providers: [GetNoteIconsComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
