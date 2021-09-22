@@ -19,5 +19,9 @@ export class NoteServiceService {
   {
     return this.httpService.get(`${environment.baseUrl}/api/getNotes?userId=${this.uid}`,null,null,this.header);
   }
+  GetUserLabels()
+  {
+    return this.httpService.get(`${environment.baseUrl}/api/getLabelofUser?userId=${this.uid}`,null,null,this.header);
+  }
 }
 
