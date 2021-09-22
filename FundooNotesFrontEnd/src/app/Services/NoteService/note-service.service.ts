@@ -12,12 +12,6 @@ export class NoteServiceService {
     headers:{ Authorization:"Bearer " + localStorage.getItem('token')}
   };
   CreateNote(data:any){
-    // const params = {
-    //   Title:data.Title,
-    //   Description:data.Description,
-    //   UserId:this.userDetails.userId,
-    //   color:noteColor
-    // }
     data.UserId= this.userDetails.userId;
     return this.httpService.post(`${environment.baseUrl}/api/addNotes`,data,true,this.header);
   }

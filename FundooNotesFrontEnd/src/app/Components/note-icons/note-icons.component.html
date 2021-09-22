@@ -15,8 +15,9 @@
         <button mat-icon-button class="example-icon favorite-icon" matTooltip="Add Image">
             <mat-icon mat-list-icon class="material-icons-outlined">image</mat-icon>
         </button>
-        <button mat-icon-button class="example-icon favorite-icon" matTooltip="Archive">
-            <mat-icon mat-list-icon class="material-icons-outlined">archive</mat-icon>
+        <button mat-icon-button class="example-icon favorite-icon" matTooltip="Archive" (click)="archiveNote()">
+            <mat-icon mat-list-icon class="material-icons-outlined" *ngIf="!archive">archive</mat-icon>
+            <mat-icon mat-list-icon *ngIf="archive">archive</mat-icon>
         </button>
         <button mat-icon-button class="example-icon favorite-icon" [matMenuTriggerFor]="labelMenu" matTooltip="More">
             <mat-icon mat-list-icon class="material-icons-outlined">more_vert</mat-icon>
@@ -40,7 +41,7 @@
     <button mat-menu-item *ngFor="let rem of reminders;let i=index"
         (click)="AddReminder(rem)"><span>{{rem.Text}}</span><span style="color:#9DBDE1">{{rem.Time}}</span></button>
 </mat-menu>
-<mat-menu #colorMenu="matMenu"  yPosition="above">
+<mat-menu #colorMenu="matMenu" yPosition="above">
     <div class="color_menu">
         <span class="colors" (click)="ChangeColor(colors[i].color)" [style.background-color]="colors[i].color"
                 matTooltip="{{colors[i].toolTip}}" *ngFor="let color of colors;let i=index">

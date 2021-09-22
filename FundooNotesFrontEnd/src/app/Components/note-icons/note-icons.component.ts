@@ -11,6 +11,7 @@ import { CollaboratorComponent } from '../collaborator/collaborator.component';
 })
 export class NoteIconsComponent implements OnInit {
 
+  archive = false;
   constructor(private addNote: AddNoteComponent, private noteService: NoteServiceService, private snackBar: MatSnackBar, public dialog: MatDialog) { }
   colors: any[] = [
     {
@@ -94,10 +95,14 @@ export class NoteIconsComponent implements OnInit {
     this.addNote.bigNote = false;
     this.addNote.smallNote = true;
     let noteColor = this.addNote.noteColor=="white"?null:this.addNote.noteColor;
+    let noteReminder = this.addNote.Reminder==""?null:this.addNote.Reminder;
     const data = {
       Title:this.addNote.NoteForm.value.Title,
       Description:this.addNote.NoteForm.value.Description,
-      Color:noteColor
+      Color:noteColor,
+      Reminder:noteReminder,
+      Pin:this.addNote.pinned,
+      Archive:this.archive
     }
     this.noteService.CreateNote(data)
       .subscribe((result: any) => {
@@ -107,8 +112,10 @@ export class NoteIconsComponent implements OnInit {
           horizontalPosition: 'left'
         });
         this.addNote.noteColor="#fff";
-
-      }, error => {
+        this.archive=false;
+        this.addNote.Reminder="";
+        this.addNote.pinned = false;
+      },error => {
         this.snackBar.open(`${error.error.message}`, '', {
           duration: 3000,
           verticalPosition: 'bottom',
@@ -134,6 +141,15 @@ export class NoteIconsComponent implements OnInit {
     dialogConfig.autoFocus = true;
 
     this.dialog.open(CollaboratorComponent, dialogConfig);
+  }
+  archiveNote()
+  {
+    this.snackBar.open(`${this.archive?'Note Unarchived':'Note Archived'}`, '', {
+        duration: 2000,
+        verticalPosition: 'bottom',
+        horizontalPosition: 'left'
+      });
+    this.archive=!this.archive;
   }
 }
 

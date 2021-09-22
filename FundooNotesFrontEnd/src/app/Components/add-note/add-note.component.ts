@@ -13,7 +13,7 @@ export class AddNoteComponent implements OnInit {
   smallNote:boolean = true;
   bigNote:boolean = false;
   NoteForm !: FormGroup;
-  pinned:boolean = false;
+  pinned = false;
   noteColor = "#fff";
   isReminder=false;
   Reminder="";
