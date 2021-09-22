@@ -1,13 +1,15 @@
 <div class="icons">
     <div>
-        <button mat-icon-button class="example-icon favorite-icon" matTooltip="remind me" [matMenuTriggerFor]="reminderMenu">
-            <mat-icon mat-list-icon class="material-icons-outlined" >add_alert
+        <button mat-icon-button class="example-icon favorite-icon" matTooltip="remind me"
+            [matMenuTriggerFor]="reminderMenu">
+            <mat-icon mat-list-icon class="material-icons-outlined">add_alert
             </mat-icon>
         </button>
-        <button mat-icon-button class="example-icon favorite-icon" matTooltip="Collaborator">
+        <button mat-icon-button class="example-icon favorite-icon" matTooltip="Collaborator" (click)="openDialog()">
             <mat-icon mat-list-icon class="material-icons-outlined">person_add</mat-icon>
         </button>
-        <button mat-icon-button class="example-icon favorite-icon" [matMenuTriggerFor]="colorMenu" matTooltip="Change Color">
+        <button mat-icon-button class="example-icon favorite-icon" [matMenuTriggerFor]="colorMenu"
+            matTooltip="Change Color">
             <mat-icon mat-list-icon class="material-icons-outlined">color_lens</mat-icon>
         </button>
         <button mat-icon-button class="example-icon favorite-icon" matTooltip="Add Image">
@@ -35,10 +37,12 @@
 </mat-menu>
 <mat-menu #reminderMenu="matMenu" class="note_menu">
     <button mat-menu-item [disabled]="true">Reminder:</button>
-    <button mat-menu-item *ngFor="let rem of reminders;let i=index" (click)="addReminder(rem)"><span>{{rem.Text}}</span><span style="color:#9DBDE1">{{rem.Time}}</span></button>
+    <button mat-menu-item *ngFor="let rem of reminders;let i=index"
+        (click)="AddReminder(rem)"><span>{{rem.Text}}</span><span style="color:#9DBDE1">{{rem.Time}}</span></button>
 </mat-menu>
-<mat-menu #colorMenu="matMenu" class="color_menu" yPosition="above" >
-    <span class="colors" (click)="ChangeColor(colors[i].color)" [style.background-color]="colors[i].color" matTooltip="{{colors[i].toolTip}}" *ngFor="let color of colors;let i=index">
+<mat-menu #colorMenu="matMenu" class="color_menu" yPosition="above">
+    <span class="colors" (click)="ChangeColor(colors[i].color)" [style.background-color]="colors[i].color"
+        matTooltip="{{colors[i].toolTip}}" *ngFor="let color of colors;let i=index">
         <mat-icon mat-list-icon *ngIf="colors[i].icon">done</mat-icon>
     </span>
 </mat-menu>

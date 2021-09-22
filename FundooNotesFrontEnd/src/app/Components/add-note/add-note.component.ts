@@ -16,7 +16,7 @@ export class AddNoteComponent implements OnInit {
   pinned:boolean = false;
   noteColor = "white";
   isReminder=false;
-  Reminder="Today";
+  Reminder="";
   constructor(private snackBar:MatSnackBar) { }
 
   ngOnInit(): void {
@@ -40,8 +40,13 @@ export class AddNoteComponent implements OnInit {
       this.pinned=!this.pinned;
     
   }
-  RemoveRemider()
+  RemoveReminder()
   {
     this.isReminder = false;
+    this.snackBar.open('Reminder Deleted', '', {
+      duration: 2000,
+      verticalPosition: 'bottom',
+      horizontalPosition: 'left'
+    });
   }
 }

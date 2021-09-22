@@ -29,6 +29,7 @@ import { NoteIconsComponent } from './Components/note-icons/note-icons.component
 import {MatMenuModule} from '@angular/material/menu';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatTooltipModule} from '@angular/material/tooltip';
+import { CollaboratorComponent } from './Components/collaborator/collaborator.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,7 +39,8 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     ResetPasswordComponent,
     HomeComponent,
     AddNoteComponent,
-    NoteIconsComponent
+    NoteIconsComponent,
+    CollaboratorComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
