@@ -14,7 +14,7 @@ export class AddNoteComponent implements OnInit {
   bigNote:boolean = false;
   NoteForm !: FormGroup;
   pinned:boolean = false;
-  noteColor = "white";
+  noteColor = "#fff";
   isReminder=false;
   Reminder="";
   constructor(private snackBar:MatSnackBar) { }
@@ -32,11 +32,11 @@ export class AddNoteComponent implements OnInit {
   }
   pinNote()
   {
-    this.snackBar.open(`${this.pinned?'Note Unpinned':'Note Pinned'}`, '', {
-        duration: 2000,
-        verticalPosition: 'bottom',
-        horizontalPosition: 'left'
-      });
+    // this.snackBar.open(`${this.pinned?'Note Unpinned':'Note Pinned'}`, '', {
+    //     duration: 2000,
+    //     verticalPosition: 'bottom',
+    //     horizontalPosition: 'left'
+    //   });
       this.pinned=!this.pinned;
     
   }

@@ -33,16 +33,18 @@
     </div>
 </div>
 <mat-menu #labelMenu="matMenu" class="note_menu">
-    <button mat-menu-item>Add Label</button>
+        <button mat-menu-item>Add Label</button>
 </mat-menu>
-<mat-menu #reminderMenu="matMenu" class="note_menu">
+<mat-menu #reminderMenu="matMenu" class="reminder_menu">
     <button mat-menu-item [disabled]="true">Reminder:</button>
     <button mat-menu-item *ngFor="let rem of reminders;let i=index"
         (click)="AddReminder(rem)"><span>{{rem.Text}}</span><span style="color:#9DBDE1">{{rem.Time}}</span></button>
 </mat-menu>
-<mat-menu #colorMenu="matMenu" class="color_menu" yPosition="above">
-    <span class="colors" (click)="ChangeColor(colors[i].color)" [style.background-color]="colors[i].color"
-        matTooltip="{{colors[i].toolTip}}" *ngFor="let color of colors;let i=index">
-        <mat-icon mat-list-icon *ngIf="colors[i].icon">done</mat-icon>
-    </span>
+<mat-menu #colorMenu="matMenu"  yPosition="above">
+    <div class="color_menu">
+        <span class="colors" (click)="ChangeColor(colors[i].color)" [style.background-color]="colors[i].color"
+                matTooltip="{{colors[i].toolTip}}" *ngFor="let color of colors;let i=index">
+                <mat-icon mat-list-icon *ngIf="colors[i].icon">done</mat-icon>
+        </span>
+    </div>
 </mat-menu>

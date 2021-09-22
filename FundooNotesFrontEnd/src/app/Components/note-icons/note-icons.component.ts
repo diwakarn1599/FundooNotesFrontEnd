@@ -93,13 +93,20 @@ export class NoteIconsComponent implements OnInit {
   Close() {
     this.addNote.bigNote = false;
     this.addNote.smallNote = true;
-    this.noteService.CreateNote(this.addNote.NoteForm.value)
+    let noteColor = this.addNote.noteColor=="white"?null:this.addNote.noteColor;
+    const data = {
+      Title:this.addNote.NoteForm.value.Title,
+      Description:this.addNote.NoteForm.value.Description,
+      Color:noteColor
+    }
+    this.noteService.CreateNote(data)
       .subscribe((result: any) => {
         this.snackBar.open(`${result.message}`, '', {
           duration: 3000,
           verticalPosition: 'bottom',
           horizontalPosition: 'left'
         });
+        this.addNote.noteColor="#fff";
 
       }, error => {
         this.snackBar.open(`${error.error.message}`, '', {
