@@ -32,6 +32,7 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import { CollaboratorComponent } from './Components/collaborator/collaborator.component';
 import { GetNotesComponent } from './Components/get-notes/get-notes.component';
 import { GetNoteIconsComponent } from './Components/get-note-icons/get-note-icons.component';
+import { ArchiveComponent } from './Components/archive/archive.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,7 +45,8 @@ import { GetNoteIconsComponent } from './Components/get-note-icons/get-note-icon
     NoteIconsComponent,
     CollaboratorComponent,
     GetNotesComponent,
-    GetNoteIconsComponent
+    GetNoteIconsComponent,
+    ArchiveComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),

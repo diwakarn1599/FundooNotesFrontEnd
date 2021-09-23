@@ -116,6 +116,7 @@ export class NoteIconsComponent implements OnInit {
         this.archive=false;
         this.addNote.Reminder="";
         this.addNote.pinned = false;
+        this.note.getNotes();
       },error => {
         this.snackBar.open(`${error.error.message}`, '', {
           duration: 3000,
@@ -124,7 +125,6 @@ export class NoteIconsComponent implements OnInit {
         });
       });
     this.addNote.NoteForm.reset();
-    this.note.getNotes();
   }
   ChangeColor(color: any) {
     this.addNote.noteColor = color;

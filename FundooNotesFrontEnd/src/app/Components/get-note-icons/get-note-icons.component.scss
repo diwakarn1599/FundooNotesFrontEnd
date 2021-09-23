@@ -61,3 +61,7 @@ button.mat-menu-item {
     cursor: pointer;
     border: 1px solid black;
 }
+::ng-deep .mat-icon-button
+{
+    width: 37px!important;
+}

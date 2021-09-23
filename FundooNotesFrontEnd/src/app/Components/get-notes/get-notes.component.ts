@@ -12,6 +12,7 @@ import { NoteServiceService } from 'src/app/Services/NoteService/note-service.se
 })
 export class GetNotesComponent implements OnInit {
   notes:any=[];
+  showpinnedNotes:any=false;
   constructor(private snackBar:MatSnackBar, private noteService:NoteServiceService) {}
   noteColor= "#fff";
   pinned = false;
@@ -31,7 +32,18 @@ export class GetNotesComponent implements OnInit {
      this.noteService.GetNotes().subscribe((result: any) => {
       this.notes=result.data;
       console.log(this.notes);
+      for (let note of this.notes) {
+        console.log("asdf");
+        if(note.pin==true)
+        {
+          console.log("pin");
+          
+          this.showpinnedNotes=true;
+          break;
+        }
+      }
     });
+    
    }
   RemoveReminder()
   {
