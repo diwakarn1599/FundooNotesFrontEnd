@@ -44,11 +44,9 @@
 }
 ::ng-deep .noteDescription
 {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap !important;
-    overflow: hidden;
-    
+    overflow: hidden !important;
+    word-wrap: break-word;
+    white-space: pre-wrap;
 }
 .reminderLabel
 {
@@ -76,12 +74,7 @@
     cursor: pointer;
 }
 
-.noteDescription{
-    
-    overflow: hidden !important;
-    word-wrap: break-word;
-    white-space: pre-wrap;
-}
+
 .pinLabel{
     color: #5f6368;
     letter-spacing: .07272727em;

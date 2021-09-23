@@ -1,7 +1,9 @@
 import { getAttrsForDirectiveMatching } from '@angular/compiler/src/render3/view/util';
 import { Component, Injectable, NgModule, OnInit } from '@angular/core';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { NoteServiceService } from 'src/app/Services/NoteService/note-service.service';
+import { UpdateNoteComponent } from '../update-note/update-note.component';
 @Injectable({ 
   providedIn: 'root'
 })
@@ -13,7 +15,7 @@ import { NoteServiceService } from 'src/app/Services/NoteService/note-service.se
 export class GetNotesComponent implements OnInit {
   notes:any=[];
   showpinnedNotes:any=false;
-  constructor(private snackBar:MatSnackBar, private noteService:NoteServiceService) {}
+  constructor(private snackBar:MatSnackBar, private noteService:NoteServiceService,public dialog: MatDialog) {}
   noteColor= "#fff";
   pinned = false;
   isReminder=false;
@@ -22,13 +24,13 @@ export class GetNotesComponent implements OnInit {
   ngOnInit(): void {
     this.getNotes();
   }
-  pinNote()
+  pinNote(note:any)
   {
-    this.pinned=!this.pinned;
+    console.log(note);
+    this.noteService.TogglePin(note.noteId).subscribe();
   }
   getNotes()
    {
-     console.log("getnote");
      this.noteService.GetNotes().subscribe((result: any) => {
       this.notes=result.data;
       console.log(this.notes);
@@ -45,36 +47,31 @@ export class GetNotesComponent implements OnInit {
     });
     
    }
-  RemoveReminder()
+  RemoveReminder(note:any)
   {
-    this.isReminder = false;
-    this.snackBar.open('Reminder Deleted', '', {
-      duration: 2000,
-      verticalPosition: 'bottom',
-      horizontalPosition: 'left'
-    });
+    this.noteService.RemoveReminder(note.noteId).subscribe(
+      (result: any)=>{
+        console.log(result);
+        
+        if(result.status==true)
+        this.snackBar.open('Reminder Deleted', '', {
+          duration: 2000,
+          verticalPosition: 'bottom',
+          horizontalPosition: 'left'
+        });
+      }
+    );
+    
   }
+  openDialog(note:any)
+  {
+    const dialogConfig = new MatDialogConfig();
+
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+
+    this.dialog.open(UpdateNoteComponent, dialogConfig);
+  }
+ 
   
-  // {
-  //   Title:"asfd",
-  //   Description:"asdf",
-  //   Color:"#fff",
-  //   Reminder:"asdf",
-  //   Image:"Asfd",
-  //   Pin:false,
-  //   Archive:false,
-  //   Trash:false,
-  //   NoteId:1
-  // },
-  // {
-  //   Title:"asfd",
-  //   Description:"asdf",
-  //   Color:"#fff",
-  //   Reminder:null,
-  //   Image:"Asfd",
-  //   Pin:true,
-  //   Archive:false,
-  //   Trash:false,
-  //   NoteId:2
-  // }
 }

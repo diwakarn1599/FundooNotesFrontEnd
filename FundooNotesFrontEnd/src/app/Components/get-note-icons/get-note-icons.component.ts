@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { NoteServiceService } from 'src/app/Services/NoteService/note-service.service';
 import { GetNotesComponent } from '../get-notes/get-notes.component';
 
 @Component({
@@ -8,8 +9,11 @@ import { GetNotesComponent } from '../get-notes/get-notes.component';
   styleUrls: ['./get-note-icons.component.scss']
 })
 export class GetNoteIconsComponent implements OnInit {
+
   archive = false;
-  constructor(private getNote:GetNotesComponent,private snackBar: MatSnackBar) { }
+  constructor(private getNote:GetNotesComponent,private snackBar: MatSnackBar,private noteService:NoteServiceService) { }
+  @Input() note: any;
+  id:any;
   colors: any[] = [
     {
       "color": "#fff",
@@ -87,23 +91,28 @@ export class GetNoteIconsComponent implements OnInit {
   ];
   ngOnInit(): void {
   }
-  AddReminder(rem: any) {
-    this.getNote.isReminder = true;
-    this.getNote.Reminder = `${rem.Text},${rem.Time}`
+  UpdateReminder(rem:any) {
+    
+    console.log(this.note);
+    this.noteService.ChangeReminder(this.note.noteId,`${rem.Text},${rem.Time}`).subscribe();
   }
-  ChangeColor(color: any) {
-    this.getNote.noteColor = color;
-    for (var val of this.colors)
-      val.icon = val.color == color ? true : false;
+  ChangeColor(color:string) {
+    console.log(color,"diwa");
+    
+    this.noteService.ChangeNoteColor(this.note.noteId,color).subscribe();
   }
   archiveNote()
   {
+    this.noteService.ToggleArchive(this.note.noteId).subscribe();
     this.snackBar.open(`${this.archive?'Note Unarchived':'Note Archived'}`, '', {
         duration: 2000,
         verticalPosition: 'bottom',
         horizontalPosition: 'left'
       });
-    this.archive=!this.archive;
+  }
+  moveToTrash()
+  {
+    this.noteService.MoveToTrash(this.note.noteId).subscribe();
   }
 
 }

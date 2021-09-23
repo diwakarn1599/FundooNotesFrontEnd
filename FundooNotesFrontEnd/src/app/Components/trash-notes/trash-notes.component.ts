@@ -23,6 +23,14 @@ export class TrashNotesComponent implements OnInit {
     });
     
    }
+   deleteForever(note:any)
+   {
+    this.noteService.DeleteNoteForever(note.noteId).subscribe();
+   }
+   RestoreNote(note:any)
+   {
+    this.noteService.RestoreNote(note.noteId).subscribe();
+   }
 
 
 }

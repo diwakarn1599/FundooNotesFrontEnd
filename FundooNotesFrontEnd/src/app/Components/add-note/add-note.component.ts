@@ -5,7 +5,7 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { WHITE_ON_BLACK_CSS_CLASS } from '@angular/cdk/a11y/high-contrast-mode/high-contrast-mode-detector';
 @Injectable({ 
-  providedIn: 'root' 
+  providedIn: 'root'
 })
 @Component({
   selector: 'app-add-note',
