@@ -13,6 +13,7 @@ export class HomeComponent implements OnInit {
   list: boolean = true;
   constructor(private router:Router,private noteService:NoteServiceService) { }
   labels:any=[];
+  page="notes";
   ngOnInit(): void {
     this.getAllLabels();
   }

@@ -3,11 +3,11 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { NoteServiceService } from 'src/app/Services/NoteService/note-service.service';
 
 @Component({
-  selector: 'app-archive',
-  templateUrl: './archive.component.html',
-  styleUrls: ['./archive.component.scss']
+  selector: 'app-reminders',
+  templateUrl: './reminders.component.html',
+  styleUrls: ['./reminders.component.scss']
 })
-export class ArchiveComponent implements OnInit {
+export class RemindersComponent implements OnInit {
 
   notes:any=[];
   showpinnedNotes:any=false;
@@ -27,7 +27,7 @@ export class ArchiveComponent implements OnInit {
   getNotes()
    {
      console.log("Get Archive Notes");
-     this.noteService.GetArchiveNotes().subscribe((result: any) => {
+     this.noteService.GetReminderNotes().subscribe((result: any) => {
       this.notes=result.data;
       console.log(this.notes);
       for (let note of this.notes) {

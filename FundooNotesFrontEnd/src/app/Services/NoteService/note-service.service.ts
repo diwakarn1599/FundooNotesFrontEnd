@@ -23,5 +23,17 @@ export class NoteServiceService {
   {
     return this.httpService.get(`${environment.baseUrl}/api/getLabelofUser?userId=${this.uid}`,null,null,this.header);
   }
+  GetArchiveNotes()
+  {
+    return this.httpService.get(`${environment.baseUrl}/api/getArchive?userId=${this.uid}`,null,null,this.header);
+  }
+  GetReminderNotes()
+  {
+    return this.httpService.get(`${environment.baseUrl}/api/getReminder?userId=${this.uid}`,null,null,this.header);
+  }
+  GetTrashNotes()
+  {
+    return this.httpService.get(`${environment.baseUrl}/api/getTrash?userId=${this.uid}`,null,null,this.header);
+  }
 }
 
