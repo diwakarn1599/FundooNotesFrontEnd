@@ -82,5 +82,9 @@ export class NoteServiceService {
   {
     return this.httpService.put(`${environment.baseUrl}/api/updateNote`,note,true,this.header);
   }
+  EmptyTrash()
+  {
+    return this.httpService.delete(`${environment.baseUrl}/api/emptyTrash?userId=${this.uid}`,true,this.header);
+  }
 }
 

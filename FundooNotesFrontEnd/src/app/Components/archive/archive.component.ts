@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { NoteServiceService } from 'src/app/Services/NoteService/note-service.service';
+import { UpdateNoteComponent } from '../update-note/update-note.component';
 
 @Component({
   selector: 'app-archive',
@@ -11,7 +13,7 @@ export class ArchiveComponent implements OnInit {
 
   notes:any=[];
   showpinnedNotes:any=false;
-  constructor(private snackBar:MatSnackBar, private noteService:NoteServiceService) {}
+  constructor(private snackBar:MatSnackBar, private noteService:NoteServiceService,public dialog: MatDialog) {}
   noteColor= "#fff";
   pinned = false;
   isReminder=false;
@@ -20,9 +22,11 @@ export class ArchiveComponent implements OnInit {
   ngOnInit(): void {
     this.getNotes();
   }
-  pinNote()
+  pinNote(note:any)
   {
-    this.pinned=!this.pinned;
+    console.log(note);
+    this.noteService.TogglePin(note.noteId).subscribe();
+    this.noteService.ToggleArchive(note.noteId).subscribe();
   }
   getNotes()
    {
@@ -51,6 +55,15 @@ export class ArchiveComponent implements OnInit {
       verticalPosition: 'bottom',
       horizontalPosition: 'left'
     });
+  }
+  openDialog(note:any)
+  {
+    console.log(note);
+    this.dialog.open(UpdateNoteComponent, {
+      panelClass: 'dialog-container-custom',
+       data: {
+      data: note
+    }});
   }
 
 }

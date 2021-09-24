@@ -31,6 +31,10 @@ export class TrashNotesComponent implements OnInit {
    {
     this.noteService.RestoreNote(note.noteId).subscribe();
    }
+   emptyTrash()
+   {
+     this.noteService.EmptyTrash().subscribe();
+   }
 
 
 }

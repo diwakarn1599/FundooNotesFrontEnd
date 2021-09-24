@@ -1,6 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { NoteServiceService } from 'src/app/Services/NoteService/note-service.service';
+import { CollaboratorComponent } from '../collaborator/collaborator.component';
 import { GetNotesComponent } from '../get-notes/get-notes.component';
 
 @Component({
@@ -11,7 +13,7 @@ import { GetNotesComponent } from '../get-notes/get-notes.component';
 export class GetNoteIconsComponent implements OnInit {
 
   archive = false;
-  constructor(private getNote:GetNotesComponent,private snackBar: MatSnackBar,private noteService:NoteServiceService) { }
+  constructor(private getNote:GetNotesComponent,public dialog: MatDialog,private snackBar: MatSnackBar,private noteService:NoteServiceService) { }
   @Input() note: any;
   id:any;
   colors: any[] = [
@@ -119,6 +121,12 @@ export class GetNoteIconsComponent implements OnInit {
   moveToTrash()
   {
     this.noteService.MoveToTrash(this.note.noteId).subscribe();
+  }
+  openDialog() {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    this.dialog.open(CollaboratorComponent, dialogConfig);
   }
 
 }

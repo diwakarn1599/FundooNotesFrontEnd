@@ -68,8 +68,6 @@ export class GetNotesComponent implements OnInit {
     console.log(note);
     
     const dialogConfig = new MatDialogConfig();
-    dialogConfig.disableClose = true;
-    dialogConfig.autoFocus = true;
     this.dialog.open(UpdateNoteComponent, {
       panelClass: 'dialog-container-custom',
        data: {
