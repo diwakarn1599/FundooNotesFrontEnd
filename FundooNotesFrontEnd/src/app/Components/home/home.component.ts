@@ -9,6 +9,7 @@ import { GetNotesComponent } from '../get-notes/get-notes.component';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+  
   opened: boolean = true;
   list: boolean = true;
   constructor(private router:Router,private noteService:NoteServiceService) { }

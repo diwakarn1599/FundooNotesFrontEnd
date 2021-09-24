@@ -78,5 +78,9 @@ export class NoteServiceService {
     let params = new HttpParams().set('noteId',id);
     return this.httpService.put(`${environment.baseUrl}/api/restoreNote`,params,true,this.header);
   }
+  UpdateNote(note:any)
+  {
+    return this.httpService.put(`${environment.baseUrl}/api/updateNote`,note,true,this.header);
+  }
 }
 

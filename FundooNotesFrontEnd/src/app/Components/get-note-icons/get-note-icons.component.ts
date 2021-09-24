@@ -90,6 +90,12 @@ export class GetNoteIconsComponent implements OnInit {
     }
   ];
   ngOnInit(): void {
+    this.getIcon();
+  }
+  getIcon()
+  {
+    for (var val of this.colors)
+      val.icon = val.color == this.note.color ? true : false;
   }
   UpdateReminder(rem:any) {
     

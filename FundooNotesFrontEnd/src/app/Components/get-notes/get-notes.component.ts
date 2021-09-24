@@ -12,6 +12,7 @@ import { UpdateNoteComponent } from '../update-note/update-note.component';
   templateUrl: './get-notes.component.html',
   styleUrls: ['./get-notes.component.scss']
 })
+
 export class GetNotesComponent implements OnInit {
   notes:any=[];
   showpinnedNotes:any=false;
@@ -52,7 +53,6 @@ export class GetNotesComponent implements OnInit {
     this.noteService.RemoveReminder(note.noteId).subscribe(
       (result: any)=>{
         console.log(result);
-        
         if(result.status==true)
         this.snackBar.open('Reminder Deleted', '', {
           duration: 2000,
@@ -65,12 +65,16 @@ export class GetNotesComponent implements OnInit {
   }
   openDialog(note:any)
   {
+    console.log(note);
+    
     const dialogConfig = new MatDialogConfig();
-
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
-
-    this.dialog.open(UpdateNoteComponent, dialogConfig);
+    this.dialog.open(UpdateNoteComponent, {
+      panelClass: 'dialog-container-custom',
+       data: {
+      data: note
+    }});
   }
  
   

@@ -20,9 +20,10 @@
     mat-card{
         display: flex;
         flex-direction: row;
-        min-width:525px;
+        min-width:505px;
         align-items: center;
         border-radius: 10px;
+        height: 100%;
         form{
             width: 100%;
         }
@@ -68,6 +69,7 @@
         width: fit-content;
         max-height: 25px;
         border-radius: 15px;
+        margin-left: 14px;
         p{
             margin-top: 10px;
         }
@@ -80,11 +82,17 @@
 .cursor:hover
 {
     cursor: pointer;
-}    
-    ::ng-deep .mat-dialog-container
-    {
-        border-radius: 7px;
-        padding: 8px 0px 17px 0px!important;
-        overflow-y: hidden !important;
-        overflow-x: hidden !important;
-    }
+}  
+.foot
+{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}  
+::ng-deep .dialog-container-custom .mat-dialog-container 
+{
+    border-radius: 7px;
+    padding: 0px 0px 0px 0px!important;
+    overflow-y: hidden !important;
+    overflow-x: hidden !important;
+}
