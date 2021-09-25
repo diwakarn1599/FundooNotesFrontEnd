@@ -2,6 +2,7 @@ import { getAttrsForDirectiveMatching } from '@angular/compiler/src/render3/view
 import { Component, Injectable, NgModule, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { DataServiceService } from 'src/app/Services/DataService/data-service.service';
 import { NoteServiceService } from 'src/app/Services/NoteService/note-service.service';
 import { UpdateNoteComponent } from '../update-note/update-note.component';
 @Injectable({ 
@@ -16,7 +17,7 @@ import { UpdateNoteComponent } from '../update-note/update-note.component';
 export class GetNotesComponent implements OnInit {
   notes:any=[];
   showpinnedNotes:any=false;
-  constructor(private snackBar:MatSnackBar, private noteService:NoteServiceService,public dialog: MatDialog) {}
+  constructor(private snackBar:MatSnackBar,private datasharing:DataServiceService, private noteService:NoteServiceService,public dialog: MatDialog) {}
   noteColor= "#fff";
   pinned = false;
   isReminder=false;
@@ -24,17 +25,25 @@ export class GetNotesComponent implements OnInit {
   hovered = false;
   ngOnInit(): void {
     this.getNotes();
+    this.datasharing.currentMessage.subscribe((change)=>{
+      if(change == true){
+        this.getNotes();
+        this.datasharing.changeMessage(false);
+      }
+    });
   }
   pinNote(note:any)
   {
     console.log(note);
     this.noteService.TogglePin(note.noteId).subscribe();
+    this.getNotes();
+    this.datasharing.changeMessage(true);
   }
   getNotes()
    {
      this.noteService.GetNotes().subscribe((result: any) => {
       this.notes=result.data;
-      console.log(this.notes);
+      console.log(this.notes,"note retrived");
       for (let note of this.notes) {
         console.log("asdf");
         if(note.pin==true)
@@ -53,6 +62,7 @@ export class GetNotesComponent implements OnInit {
     this.noteService.RemoveReminder(note.noteId).subscribe(
       (result: any)=>{
         console.log(result);
+        this.datasharing.changeMessage(true);
         if(result.status==true)
         this.snackBar.open('Reminder Deleted', '', {
           duration: 2000,
@@ -66,8 +76,6 @@ export class GetNotesComponent implements OnInit {
   openDialog(note:any)
   {
     console.log(note);
-    
-    const dialogConfig = new MatDialogConfig();
     this.dialog.open(UpdateNoteComponent, {
       panelClass: 'dialog-container-custom',
        data: {

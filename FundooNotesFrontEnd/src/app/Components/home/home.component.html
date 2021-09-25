@@ -7,7 +7,7 @@
             <span>
                 <img src="../../../assets/images/fundooLogo.png" class="img_logo" />
             </span>
-            <span style="color:#5F6C7F">Fundoo</span>
+            <span style="color:#5F6C7F">{{page}}</span>
         </div>
         <div>
             <mat-form-field class="example-full-width" appearance="fill" [style.width.px]=600>
@@ -26,9 +26,9 @@
                 <mat-icon>account_circle</mat-icon>
             </button>
             <mat-menu #menu="matMenu" class="profileMenu" style="padding-top:20px;" id="profileMenu">
-                <img src="../../../assets/images/profilePic.PNG" class="profilePic">
-                <h1>Diwakar N</h1>
-                <p>diwakarn@gmail.com</p>
+                <img src="../../../assets/images/profilePic.PNG" class="profilePic" style="margin-top:10px">
+                <h1>{{userDetails.firstName}} {{userDetails.lastName}}</h1>
+                <p>{{userDetails.email}}</p>
                 <mat-divider style="margin-top: 20px;"></mat-divider>
                 <button mat-stroked-button style="margin:10px 0" (click)="SignOut()">Sign out</button>
                 <mat-divider></mat-divider>
@@ -38,11 +38,11 @@
     <mat-sidenav-container class="main">
         <mat-sidenav #sidenav mode="side" [(opened)]="opened" class="side_nav" (mouseover)='opened=true'>
             <mat-nav-list>
-                <mat-list-item (click)="page='notes'">
+                <mat-list-item (click)="page='Fundoo'">
                     <mat-icon mat-list-icon class="sidenavLogo">lightbulb_outline</mat-icon>
                     <h4 mat-line>Notes</h4>
                 </mat-list-item>
-                <mat-list-item (click)="page='reminder'">
+                <mat-list-item (click)="page='Reminder'">
                     <mat-icon mat-list-icon class="sidenavLogo">notifications_none</mat-icon>
                     <h4 mat-line>Reminders</h4>
                 </mat-list-item>
@@ -54,25 +54,25 @@
                     <mat-icon mat-list-icon class="sidenavLogo material-icons-outlined">edit</mat-icon>
                     <h4 mat-line>Edit labels</h4>
                 </mat-list-item>
-                <mat-list-item (click)="page='archive'">
+                <mat-list-item (click)="page='Archive'">
                     <mat-icon mat-list-icon class="sidenavLogo material-icons-outlined">archive</mat-icon>
                     <h4 mat-line>Archive</h4>
                 </mat-list-item>
-                <mat-list-item (click)="page='trash'">
+                <mat-list-item (click)="page='Trash'">
                     <mat-icon mat-list-icon class="sidenavLogo material-icons-outlined">delete</mat-icon>
                     <h4 mat-line>Trash</h4>
                 </mat-list-item>
             </mat-nav-list>
         </mat-sidenav>
         <mat-sidenav-content>
-            <div class="mainContent" *ngIf="page=='notes'||page=='reminder'">
-                <app-add-note ></app-add-note>
+            <div class="mainContent" *ngIf="page=='Fundoo'||page=='Reminder'">
+                <app-add-note></app-add-note>
             </div>
             <div class="get_notes">
-                <app-get-notes *ngIf="page=='notes'"></app-get-notes>
-                <app-archive *ngIf="page=='archive'"></app-archive>
-                <app-reminders *ngIf="page=='reminder'"></app-reminders>
-                <app-trash-notes *ngIf="page=='trash'"></app-trash-notes>
+                <app-get-notes *ngIf="page=='Fundoo'"></app-get-notes>
+                <app-archive *ngIf="page=='Archive'"></app-archive>
+                <app-reminders *ngIf="page=='Reminder'"></app-reminders>
+                <app-trash-notes *ngIf="page=='Trash'"></app-trash-notes>
             </div>
         </mat-sidenav-content>
     </mat-sidenav-container>

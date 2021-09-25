@@ -1,21 +1,36 @@
 <div class="mainCollab" style="padding-left: 20px;">
     <h2 mat-dialog-title>Collaborator</h2>
     <mat-divider style="margin-top: -15px;"></mat-divider>
-    <mat-dialog-content [formGroup]="AddCollaboratorForm">
+    <mat-dialog-content>
         <div class="collaborators">
             <div class="user">
-                <img src="../../../assets/images/profilePic.PNG" class="profilePic">
                 <div class="UserName">
-                    <h4 style="height:6px">Diwakar N<span
+                    <img src="../../../assets/images/profilePic.PNG" class="profilePic">
+                    <span>
+                    <h4 style="height:6px">{{userDetails.firstName}} {{userDetails.lastName}}<span
                             style="font-style: italic;font-weight: lighter;">(Owner)</span></h4>
-                    <p>diwakarn1599@gmailcom</p>
+                    <p>{{userDetails.email}}</p>
+                    </span>
+                </div>
+            </div>
+            <div class="user" *ngFor="let user of collaborators">
+                <div class="UserName">
+                    <img src="../../../assets/images/profilePic.PNG" class="profilePic">
+                    <span style="width: 500px;">
+                    <h4 style="height:6px">New Collaborator</h4>
+                    <p>{{user.collaboratorEmailId}}</p>
+                    </span>
+                    <mat-icon (click)="RemoveCollaborator(user.collaboratorId)" class="collabButton">close</mat-icon>
                 </div>
             </div>
             <div class="user">
                 <span class="add">
                     <mat-icon class="addperson">person_add</mat-icon>
                 </span>
-                <input placeholder="Person or email to share with" formControlName="email" class="person">
+                <form [formGroup]="AddCollaboratorForm">
+                    <input placeholder="Person or email to share with" formControlName="email" class="person" >
+                    <mat-icon *ngIf="AddCollaboratorForm.valid" (click)="addCollaborator()" class="collabButton">done</mat-icon>
+                </form>
             </div>
         </div>
 

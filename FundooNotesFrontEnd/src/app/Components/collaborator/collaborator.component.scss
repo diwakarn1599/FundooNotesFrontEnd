@@ -16,11 +16,11 @@
     display: flex;
     flex-direction: row;
     align-items: center;
+    width: 100%;
     .UserName{
-        margin-left: 10px;
         margin-top: 10px;
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
         p{
             font-size: 13px;
         }
@@ -32,7 +32,10 @@
     width: 40px;
     border-radius: 50%;
  }
- 
+ .collabButton:hover
+ {
+    cursor: pointer;
+ }
 h4{
     font-weight: 800;
     font-size: 13px;
@@ -53,6 +56,7 @@ h4{
     color: #3c4043;
     width:300px;
     background-color: transparent;
+    width: 490px;
 }
 .person:focus { 
     outline: none !important;

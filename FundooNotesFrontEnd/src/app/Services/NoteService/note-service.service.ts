@@ -71,7 +71,7 @@ export class NoteServiceService {
   }
   DeleteNoteForever(id:any)
   {
-    return this.httpService.delete(`${environment.baseUrl}/api/deleteNote?noteId=${id}`,true,this.header);
+    return this.httpService.delete(`${environment.baseUrl}/api/deleteNote?noteId=${id}`,null,true,this.header);
   }
   RestoreNote(id:any)
   {
@@ -84,7 +84,22 @@ export class NoteServiceService {
   }
   EmptyTrash()
   {
-    return this.httpService.delete(`${environment.baseUrl}/api/emptyTrash?userId=${this.uid}`,true,this.header);
+    return this.httpService.delete(`${environment.baseUrl}/api/emptyTrash?userId=${this.uid}`,null,true,this.header);
+  }
+  AddCollaborator(data:any)
+  {
+    return this.httpService.post(`${environment.baseUrl}/api/addCollaborator`,data,true,this.header);
+  }
+  GetCollaborators(id:any)
+  {
+    return this.httpService.get(`${environment.baseUrl}/api/getCollaborators?noteId=${id}`,null,null,this.header);
+  }
+  RemoveCollaborator(cId:any,nId:any)
+  {
+    console.log(cId,nId,"remove COllab");
+    
+    let params = new HttpParams().set('collaboratorId',cId).set('noteId',nId);
+    return this.httpService.delete(`${environment.baseUrl}/api/removeCollaborator?collaboratorId=${cId}&noteId=${nId}`,null,true,this.header);
   }
 }
 

@@ -25,7 +25,7 @@ export class HttpServiceService {
     console.log(url,data+"value");
     return this.http.get(url,headers);
   }
-  delete(url:string,isHeaderRequired:any=false,headers:any=false)
+  delete(url:string,data:any=null,isHeaderRequired:any=false,headers:any=false)
   {
     console.log("httpservice",url);
     console.log(url+"value");
