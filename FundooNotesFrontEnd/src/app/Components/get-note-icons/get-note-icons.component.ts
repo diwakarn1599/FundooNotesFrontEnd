@@ -92,8 +92,10 @@ export class GetNoteIconsComponent implements OnInit {
       "Time": "8:00 AM"
     }
   ];
+  isArchive:any;
   ngOnInit(): void {
     this.getIcon();
+    this.isArchive = this.note.archive?"unarchive":"archive";
   }
   getIcon()
   {
@@ -103,13 +105,17 @@ export class GetNoteIconsComponent implements OnInit {
   UpdateReminder(rem:any) {
     
     console.log(this.note);
-    this.noteService.ChangeReminder(this.note.noteId,`${rem.Text},${rem.Time}`).subscribe();
-    this.datasharing.changeMessage(true);
+    this.noteService.ChangeReminder(this.note.noteId,`${rem.Text},${rem.Time}`).subscribe((result:any)=>{
+      this.datasharing.changeMessage(true);
+    });
+    
   }
   ChangeColor(color:string) {
     console.log(color,"diwa");
     
-    this.noteService.ChangeNoteColor(this.note.noteId,color).subscribe();
+    this.noteService.ChangeNoteColor(this.note.noteId,color).subscribe((result:any)=>{
+      this.datasharing.changeMessage(true);
+    });
   }
   archiveNote()
   {
@@ -129,5 +135,15 @@ export class GetNoteIconsComponent implements OnInit {
       data: this.note
     }});
   }
+  // setImage(event:any){
+  //   if(event.target.files){
+  //     this.event = event;
+  //     var reader = new FileReader();
+  //     reader.readAsDataURL(event.target.files[0]);
+  //     reader.onload =(event:any)=>{
+  //       this.imageLink = event.target.result;
+  //     }
+  //   }
+  // }
 
 }

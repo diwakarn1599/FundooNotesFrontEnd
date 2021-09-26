@@ -12,6 +12,7 @@ export class HomeComponent implements OnInit {
   
   opened: boolean = true;
   list: boolean = true;
+  labelName:any;
   constructor(private router:Router,private noteService:NoteServiceService) { }
   labels:any=[];
   page="Fundoo";

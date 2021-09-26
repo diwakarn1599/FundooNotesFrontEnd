@@ -17,6 +17,7 @@ import { UpdateNoteComponent } from '../update-note/update-note.component';
 export class GetNotesComponent implements OnInit {
   notes:any=[];
   showpinnedNotes:any=false;
+  isHovered:boolean = false;
   constructor(private snackBar:MatSnackBar,private datasharing:DataServiceService, private noteService:NoteServiceService,public dialog: MatDialog) {}
   noteColor= "#fff";
   pinned = false;
@@ -35,9 +36,10 @@ export class GetNotesComponent implements OnInit {
   pinNote(note:any)
   {
     console.log(note);
-    this.noteService.TogglePin(note.noteId).subscribe();
-    this.getNotes();
-    this.datasharing.changeMessage(true);
+    this.noteService.TogglePin(note.noteId).subscribe((result:any)=>{
+      this.datasharing.changeMessage(true);
+    });
+    
   }
   getNotes()
    {
@@ -49,7 +51,6 @@ export class GetNotesComponent implements OnInit {
         if(note.pin==true)
         {
           console.log("pin");
-          
           this.showpinnedNotes=true;
           break;
         }

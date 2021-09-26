@@ -5,6 +5,7 @@ import { AddNoteComponent } from '../add-note/add-note.component';
 import { MatDialog, MatDialogConfig, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { CollaboratorComponent } from '../collaborator/collaborator.component';
 import { GetNotesComponent } from '../get-notes/get-notes.component';
+import { DataServiceService } from 'src/app/Services/DataService/data-service.service';
 @Component({
   selector: 'app-note-icons',
   templateUrl: './note-icons.component.html',
@@ -13,7 +14,7 @@ import { GetNotesComponent } from '../get-notes/get-notes.component';
 export class NoteIconsComponent implements OnInit {
 
   archive = false;
-  constructor(private addNote: AddNoteComponent, private noteService: NoteServiceService, private snackBar: MatSnackBar, public dialog: MatDialog,private note:GetNotesComponent) { }
+  constructor(private addNote: AddNoteComponent,private datasharing:DataServiceService, private noteService: NoteServiceService, private snackBar: MatSnackBar, public dialog: MatDialog,private note:GetNotesComponent) { }
   colors: any[] = [
     {
       "color": "#fff",
@@ -116,7 +117,7 @@ export class NoteIconsComponent implements OnInit {
         this.archive=false;
         this.addNote.Reminder="";
         this.addNote.pinned = false;
-        this.note.getNotes();
+        this.datasharing.changeMessage(true);
       },error => {
         this.snackBar.open(`${error.error.message}`, '', {
           duration: 3000,

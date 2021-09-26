@@ -14,10 +14,10 @@
         </button>
         <button mat-icon-button class="example-icon favorite-icon" matTooltip="Add Image">
             <mat-icon mat-list-icon class="material-icons-outlined">image</mat-icon>
-            <input type="file" />
+            <input type="file" style="display: none;"  />
         </button>
-        <button mat-icon-button class="example-icon favorite-icon" matTooltip="Archive" (click)="archiveNote()">
-            <mat-icon mat-list-icon class="material-icons-outlined">archive</mat-icon>
+        <button mat-icon-button class="example-icon favorite-icon" matTooltip="{{isArchive}}" (click)="archiveNote()">
+            <mat-icon mat-list-icon class="material-icons-outlined">{{isArchive}}</mat-icon>
             
         </button>
         <button mat-icon-button class="example-icon favorite-icon" [matMenuTriggerFor]="labelMenu" matTooltip="More">

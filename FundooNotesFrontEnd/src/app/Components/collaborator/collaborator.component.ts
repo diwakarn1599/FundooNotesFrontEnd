@@ -44,11 +44,15 @@ export class CollaboratorComponent implements OnInit {
       OwnerEmailId:this.userDetails.email,
       CollaboratorEmailId:this.AddCollaboratorForm.value.email
     }
-    this.noteService.AddCollaborator(this.params).subscribe();
-    this.getCollaborators();
+    this.noteService.AddCollaborator(this.params).subscribe((result:any)=>{
+      this.getCollaborators();
+    });
+    
   }
   RemoveCollaborator(id:any)
   {
-    this.noteService.RemoveCollaborator(id,this.data.data.noteId).subscribe();
+    this.noteService.RemoveCollaborator(id,this.data.data.noteId).subscribe((result:any)=>{
+      this.getCollaborators();
+    });
   }
 }

@@ -101,5 +101,13 @@ export class NoteServiceService {
     let params = new HttpParams().set('collaboratorId',cId).set('noteId',nId);
     return this.httpService.delete(`${environment.baseUrl}/api/removeCollaborator?collaboratorId=${cId}&noteId=${nId}`,null,true,this.header);
   }
+  GetLabelNotes(label:any)
+  {
+    const params={
+      LabelName : label,
+      UserId : this.uid
+    }
+    return this.httpService.post(`${environment.baseUrl}/api/getLabelNotes`,params,true,this.header);
+  }
 }
 

@@ -3,7 +3,7 @@
     <div class="displayRow">
         <div *ngFor="let note of notes">
             <div class="notes" *ngIf="note.pin" id={{note.noteId}}>
-                <mat-card class="getNoteCard" [style.background-color]="note.color">
+                <mat-card class="getNoteCard" [style.background-color]="note.color" (mouseenter)="this.isHovered = true" (mouseleave)="this.isHovered = false">
                     <div>
                         <div>
                             <mat-card-title>
@@ -34,7 +34,7 @@
                                     (click)="RemoveReminder(note)">close
                                 </mat-icon>
                             </span>
-                            <div class="getIcons">
+                            <div class="getIcons" [style.display]="isHovered ? 'block' : 'none'">
                                 <app-get-note-icons [note]="note"></app-get-note-icons>
                             </div>
                         </mat-card-footer>
