@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
     .subscribe((result:any)=>{
       console.log(result);
         localStorage.setItem('token',result.jwtToken);
-        localStorage.setItem('userDetails',JSON.stringify(result.userData));
+        localStorage.setItem('FundooUserDetails',JSON.stringify(result.userData));
         this.snackBar.open(`${result.message}`, '', {
           duration: 3000,
           verticalPosition: 'bottom',

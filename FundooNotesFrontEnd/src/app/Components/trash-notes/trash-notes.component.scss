@@ -29,7 +29,7 @@
  }
 ::ng-deep .getNoteCard
 {
-    width:190px;
+    width:220px;
     max-height: 1000px;
     min-height: 130px;
     border-radius: 13px!important;
@@ -37,8 +37,12 @@
     margin-top: -10px;
     margin-bottom: 20px;
     border: 1px solid #E0E0E0 ;
+    padding: 0 !important;
 }
-
+.noteContents
+{
+    padding: 12px;
+}
 ::ng-deep .card_title
 {
     display: flex;

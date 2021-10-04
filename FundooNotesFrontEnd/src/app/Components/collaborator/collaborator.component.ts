@@ -18,7 +18,7 @@ export class CollaboratorComponent implements OnInit {
     this.AddCollaboratorForm = new FormGroup({
       email: new FormControl('',[Validators.required])
     });
-    this.userDetails = JSON.parse(localStorage.getItem('userDetails')!);
+    this.userDetails = JSON.parse(localStorage.getItem('FundooUserDetails')!);
     this.getCollaborators();
   }
   close() {

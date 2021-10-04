@@ -19,11 +19,13 @@
     }
     mat-card{
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
         min-width:505px;
         align-items: center;
         border-radius: 10px;
         height: 100%;
+        margin: 0px -17px !important;
+        padding: 0;
         form{
             width: 100%;
         }
@@ -47,6 +49,11 @@
         justify-content: space-between;
         width: 100%;
     }
+    .updateContent
+    {
+        padding: 10px 10px 15px 10px !important;
+        width: 90%;
+    }
     .big-card-content
     {
         display: flex;
@@ -57,6 +64,23 @@
     :ng-deep .mat-card-footer
     {
         width: 100%;
+    }
+    .imageContainer
+    {
+        width: 100%;
+        border-radius: 10px 10px 0 0;
+        position: relative;
+        .deleteImage{
+            position: absolute;
+            top: 95%;
+            left: 95%;
+            transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            cursor: pointer;
+            border-radius: 5px;
+            text-align: center;
+        }
+        
     }
     .reminderLabel
     {

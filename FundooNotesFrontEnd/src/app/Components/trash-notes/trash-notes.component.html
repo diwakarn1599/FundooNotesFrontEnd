@@ -6,7 +6,8 @@
     <div *ngFor="let note of notes">
         <div class="notes" id={{note.noteId}} (mouseenter)="hovered=true" (mouseleave)="hovered=false">
             <mat-card class="getNoteCard" [style.background-color]="note.color">
-                <div>
+                <img src={{note.image}} alt="" *ngIf="note.image!=null" style="width: 100%;border-radius: 10px 10px 0 0">
+                <div class="noteContents">
                     <mat-card-title>
                         <div class="card_title">
                             <div id="noteTitle" class="noteTitle">

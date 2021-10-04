@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { DataServiceService } from 'src/app/Services/DataService/data-service.service';
 import { NoteServiceService } from 'src/app/Services/NoteService/note-service.service';
 import { UpdateNoteComponent } from '../update-note/update-note.component';
 
@@ -13,7 +14,7 @@ export class ArchiveComponent implements OnInit {
 
   notes:any=[];
   showpinnedNotes:any=false;
-  constructor(private snackBar:MatSnackBar, private noteService:NoteServiceService,public dialog: MatDialog) {}
+  constructor(private snackBar:MatSnackBar,private datasharing:DataServiceService, private noteService:NoteServiceService,public dialog: MatDialog) {}
   noteColor= "#fff";
   pinned = false;
   isReminder=false;
@@ -21,6 +22,12 @@ export class ArchiveComponent implements OnInit {
   hovered = false;
   ngOnInit(): void {
     this.getNotes();
+    this.datasharing.currentMessage.subscribe((change)=>{
+      if(change == true){
+        this.getNotes();
+        this.datasharing.changeMessage(false);
+      }
+    });
   }
   pinNote(note:any)
   {

@@ -3,9 +3,10 @@
     <div class="displayRow">
         <div *ngFor="let note of notes">
             <div class="notes" *ngIf="note.pin" id={{note.noteId}}>
-                <mat-card class="getNoteCard" [style.background-color]="note.color" (mouseenter)="this.isHovered = true" (mouseleave)="this.isHovered = false">
+                <mat-card class="getNoteCard" [style.background-color]="note.color" >
+                    <img src={{note.image}} alt="" *ngIf="note.image!=null" style="width: 100%;border-radius: 10px 10px 0 0">
                     <div>
-                        <div>
+                        <div class="noteContents">
                             <mat-card-title>
                                 <div class="card_title">
                                     <div id="noteTitle" class="noteDescription" (click)="openDialog(note)">
@@ -26,7 +27,7 @@
                                 </div>
                             </mat-card-content>
                         </div>
-                        <mat-card-footer>
+                        <mat-card-footer class="noteContents">
                             <span *ngIf="note.reminder!=null" class="reminderLabel">
                                 <mat-icon mat-list-icon class="material-icons-outlined">watch_later</mat-icon>
                                 <p>{{note.reminder}}</p>
@@ -34,7 +35,7 @@
                                     (click)="RemoveReminder(note)">close
                                 </mat-icon>
                             </span>
-                            <div class="getIcons" [style.display]="isHovered ? 'block' : 'none'">
+                            <div class="getIcons">
                                 <app-get-note-icons [note]="note"></app-get-note-icons>
                             </div>
                         </mat-card-footer>
@@ -48,8 +49,9 @@
         <div *ngFor="let note of notes">
             <div class="notes" *ngIf="!note.pin" id={{note.noteId}}>
                 <mat-card class="getNoteCard" [style.background-color]="note.color">
+                    <img src={{note.image}} alt="" *ngIf="note.image!=null" style="width: 100%;border-radius: 10px 10px 0 0">
                     <div>
-                        <div>
+                        <div class="noteContents">
                             <mat-card-title>
                                 <div class="card_title">
                                     <div id="noteTitle" class="noteDescription" (click)="openDialog(note)">
@@ -70,7 +72,7 @@
                                 </div>
                             </mat-card-content>
                         </div>
-                        <mat-card-footer>
+                        <mat-card-footer class="noteContents">
                             <span *ngIf="note.reminder!=null" class="reminderLabel">
                                 <mat-icon mat-list-icon class="material-icons-outlined">watch_later</mat-icon>
                                 <p>{{note.reminder}}</p>

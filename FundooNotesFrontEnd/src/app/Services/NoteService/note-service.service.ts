@@ -6,7 +6,7 @@ import { HttpParams } from '@angular/common/http';
   providedIn: 'root'
 })
 export class NoteServiceService {
-  userDetails= JSON.parse(localStorage.getItem('userDetails')!);
+  userDetails= JSON.parse(localStorage.getItem('FundooUserDetails')!);
   constructor(private httpService:HttpServiceService) { }
   uid=this.userDetails.userId;
   header = {
@@ -108,6 +108,14 @@ export class NoteServiceService {
       UserId : this.uid
     }
     return this.httpService.post(`${environment.baseUrl}/api/getLabelNotes`,params,true,this.header);
+  }
+  addImage(noteId:any,file:any){
+    console.log(noteId+"noteId");
+    return this.httpService.put(`${environment.baseUrl}/api/addImage?noteId=${noteId}`,file,true,this.header);
+  }
+  RemoveImage(id:any)
+  {
+    return this.httpService.put(`${environment.baseUrl}/api/deleteImage?noteId=${id}`,null,true,this.header);
   }
 }
 

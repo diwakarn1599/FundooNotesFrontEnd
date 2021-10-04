@@ -119,8 +119,10 @@ export class GetNoteIconsComponent implements OnInit {
   }
   archiveNote()
   {
-    this.noteService.ToggleArchive(this.note.noteId).subscribe();
-    this.snackBar.open(`${this.archive?'Note Unarchived':'Note Archived'}`, '', {
+    this.noteService.ToggleArchive(this.note.noteId).subscribe((result:any)=>{
+      this.datasharing.changeMessage(true);
+    });
+    this.snackBar.open(`${this.note.archive?'Note Unarchived':'Note Archived'}`, '', {
         duration: 2000,
         verticalPosition: 'bottom',
         horizontalPosition: 'left'
@@ -128,22 +130,29 @@ export class GetNoteIconsComponent implements OnInit {
   }
   moveToTrash()
   {
-    this.noteService.MoveToTrash(this.note.noteId).subscribe();
+    this.noteService.MoveToTrash(this.note.noteId).subscribe((result:any)=>{
+      this.datasharing.changeMessage(true);
+    });
   }
   openDialog() {
     this.dialog.open(CollaboratorComponent, {data: {
       data: this.note
     }});
   }
-  // setImage(event:any){
-  //   if(event.target.files){
-  //     this.event = event;
-  //     var reader = new FileReader();
-  //     reader.readAsDataURL(event.target.files[0]);
-  //     reader.onload =(event:any)=>{
-  //       this.imageLink = event.target.result;
-  //     }
-  //   }
-  // }
+  onFileChanged(event: any)
+  {
+    var files: File=event.target.files.item(0);
+      console.log(event.target.files.item(0));
+      const form = new FormData();
+      form.append('imageProps',files,files.name);
+      console.log(form)
+      console.log(this.note.noteId);
+      this.noteService.addImage(this.note.noteId,form).
+      subscribe((result:any)=>{
+        this.datasharing.changeMessage(true);
+        console.log(result);
+      });
+    }
+  
 
 }

@@ -4,7 +4,8 @@
         <div *ngFor="let note of notes">
             <div class="notes" *ngIf="note.pin" id={{note.noteId}}>
                 <mat-card class="getNoteCard" [style.background-color]="note.color">
-                    <div>
+                    <img src={{note.image}} alt="" *ngIf="note.image!=null" style="width: 100%;border-radius: 10px 10px 0 0">
+                    <div class="noteContents">
                         <mat-card-title>
                             <div class="card_title">
                                 <div id="noteTitle" class="noteDescription" (click)="openDialog(note)">
@@ -45,7 +46,8 @@
         <div *ngFor="let note of notes">
             <div class="notes" *ngIf="!note.pin" id={{note.noteId}}>
                 <mat-card class="getNoteCard" [style.background-color]="note.color">
-                    <div>
+                    <img src={{note.image}} alt="" *ngIf="note.image!=null" style="width: 100%;border-radius: 10px 10px 0 0">
+                    <div class="noteContents">
                         <mat-card-title>
                             <div class="card_title">
                                 <div id="noteTitle" class="noteDescription" (click)="openDialog(note)">
@@ -73,7 +75,7 @@
                                 </mat-icon>
                             </span>
                             <div class="getIcons">
-                                <app-get-note-icons></app-get-note-icons>
+                                <app-get-note-icons [note]="note"></app-get-note-icons>
                             </div>
                         </mat-card-footer>
                     </div>
